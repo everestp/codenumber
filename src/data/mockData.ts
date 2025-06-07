@@ -17,6 +17,58 @@ export interface Language {
   chapters: Chapter[];
 }
 
+ export interface Question1 {
+  id: string;
+  langugage:string;
+  chapter:string;
+  question: string;
+  code:string;
+
+ }
+ export interface Language1 {
+  id: string;
+  name: string;
+ }
+
+ export interface Chapter1 {
+  id: string;
+  language: string;
+  name: string;
+ 
+
+ }
+
+ export const mockLangugaes: Language1[] = [
+  { id: 'python', name: 'Python' },
+  { id: 'cpp', name: 'C++' },
+  { id: 'javascript', name: 'JavaScript' }
+ ]
+
+
+ export const mockData1 :Question1[]=[
+  {
+    id: '1',
+    langugage: 'python',
+    chapter: 'variables',
+    question: 'Write a program to print "Hello World"',
+    code: `print("Hello World")`
+  },
+  {
+    id: '2',
+    langugage: 'python',
+    chapter: 'variables',
+    question: 'Create and print a variable',
+    code: `name = "Python"\nprint(name)`
+  },
+  {
+    id: '3',
+    langugage: 'cpp',
+    chapter: 'functions',
+    question: 'Write a program to print "Hello World"',
+    code: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello World" << endl;\n    return 0;\n}`
+  }
+ ]
+
 export const mockData: Language[] = [
   {
     id: 'python',
