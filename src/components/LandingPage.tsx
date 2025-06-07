@@ -36,7 +36,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartPracticing }) => {
           
           {/* Tagline */}
           <p className="text-lg md:text-xl text-muted-foreground italic font-light mb-12 tracking-wide">
-            when code meets calculations
+            where code meets calculations
           </p>
           
           {/* Description */}
