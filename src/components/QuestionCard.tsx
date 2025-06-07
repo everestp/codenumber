@@ -23,13 +23,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
   return (
     <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
       <h3 className="text-lg font-semibold text-foreground mb-4">
-        {question.title}
+        {question?.title}
       </h3>
       
       <div className="relative">
         <pre className="bg-muted/50 border border-border rounded-lg p-4 overflow-x-auto">
           <code className="text-sm font-mono text-foreground whitespace-pre">
-            {question.code}
+            {question?.code}
           </code>
         </pre>
         
