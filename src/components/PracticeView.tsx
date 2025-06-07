@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
-import { mockData, Language, Chapter } from '../data/mockData';
+import { mockData, Language, Chapter, mockData1 } from '../data/mockData';
 
 interface PracticeViewProps {
   sidebarOpen: boolean;
