@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC 167 Exam - 2081</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .exam-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .question {
+            cursor: pointer;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .dark-mode .question {
+            background-color: #2a2a2a;
+        }
+        .question:hover {
+            background-color: #e0e0e0;
+        }
+        .dark-mode .question:hover {
+            background-color: #3a3a3a;
+        }
+        .answer {
+            display: none;
+            padding: 15px;
+            margin-left: 20px;
+            border-left: 3px solid #007BFF;
+            background-color: #f9f9f9;
+        }
+        .dark-mode .answer {
+            border-left-color: #1e90ff;
+            background-color: #2a2a2a;
+        }
+        .math {
+            font-style: normal;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        .dark-mode table, .dark-mode th, .dark-mode td {
+            border-color: #ffffff;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .dark-mode pre {
+            background-color: #2a2a2a;
+        }
+        .toggle-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .dark-mode .toggle-button {
+            background-color: #1e90ff;
+        }
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
+        .dark-mode .toggle-button:hover {
+            background-color: #0c6efd;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="exam-header">
+        <h1>Tribhuvan University</h1>
+        <h2>Institute of Science and Technology</h2>
+        <h3>Bachelor Level / First Year / Second Semester / Science</h3>
+        <h3>Computer Science and Information Technology (CSC 167)</h3>
+        <h3>(Microprocessor) - 2081</h3>
+        <p>Full Marks: 60 | Pass Marks: 24 | Time: 3 hours</p>
+        <p><em>Candidates are required to give their answers in their own words as far as practicable.<br>
+        The figures in the margin indicate full marks.</em></p>
+    </div>
+
+    <div class="section">
+        <h2>Section A (2 × 10 = 20)</h2>
+        <p><em>Attempt any TWO questions:</em></p>
+        <div class="question" onclick="toggleAnswer('q1')">
+            1. Explain the internal architecture of 8085 microprocessor with well labeled block diagram. [10]
+        </div>
+        <div id="q1" class="answer">
+            <p><strong>8085 Architecture:</strong></p>
+            <p>The 8085 is an 8-bit microprocessor with the following components:</p>
+            <ul>
+                <li><strong>Registers:</strong> Six 8-bit general-purpose registers (B, C, D, E, H, L), 16-bit Stack Pointer (SP), Program Counter (PC), and 8-bit Accumulator (A).</li>
+                <li><strong>ALU:</strong> Performs arithmetic and logical operations, outputs to Accumulator and Flags (Sign, Zero, Auxiliary Carry, Parity, Carry).</li>
+                <li><strong>Control Unit:</strong> Generates control signals (e.g., RD, WR) to manage operations.</li>
+                <li><strong>Timing and Control:</strong> Includes Clock, ALE (Address Latch Enable), and signals like IO/M, S0, S1.</li>
+                <li><strong>Address/Data Bus:</strong> 16-bit address bus (A0–A15), 8-bit data bus (AD0–AD7, multiplexed).</li>
+                <li><strong>Interrupt Control:</strong> Handles interrupts (TRAP, RST 7.5, 6.5, 5.5, INTR).</li>
+                <li><strong>Serial I/O:</strong> SID (Serial Input Data), SOD (Serial Output Data).</li>
+            </ul>
+            <p><strong>Block Diagram Description:</strong></p>
+            <p>- **Registers** connect to the ALU and data bus.</p>
+            <p>- **ALU** outputs to Accumulator and Flag register.</p>
+            <p>- **Control Unit** coordinates via control signals.</p>
+            <p>- **Address/Data Bus** interfaces with memory/IO via ALE to demultiplex AD0–AD7.</p>
+            <p>- **Interrupt Control** manages priority interrupts.</p>
+            <p><strong>Final Answer:</strong> The 8085 architecture includes registers, ALU, control unit, buses, interrupt control, and serial I/O, interconnected as described.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q2')">
+            2. What is ALE signal? Draw a timing diagram for LDA 5000H instruction and explain the machine cycles involved. [2+8]
+        </div>
+        <div id="q2" class="answer">
+            <p><strong>ALE Signal:</strong></p>
+            <p>- **Address Latch Enable**: A control signal in the 8085 that demultiplexes the AD0–AD7 bus. When ALE is high, AD0–AD7 carries the lower 8 bits of the address (A0–A7). When low, it carries data.</p>
+            <p><strong>LDA 5000H Instruction:</strong></p>
+            <p>- **Operation**: Loads the Accumulator with data from memory address 5000H.</p>
+            <p>- **Opcode**: 3A H, followed by 00 H, 50 H (3 bytes).</p>
+            <p>- **Machine Cycles**: 3 cycles, 13 T-states.</p>
+            <p><strong>Timing Diagram Description:</strong></p>
+            <p>- **Opcode Fetch (4 T-states)**:</p>
+            <ul>
+                <li>T1: PC outputs address (e.g., 2000H). ALE high, AD0–AD7 = lower address (00 H). A8–A15 = 20 H. RD low, fetches opcode (3A H).</li>
+                <li>T2–T4: Opcode decoded, PC incremented.</li>
+            </ul>
+            <p>- **Memory Read 1 (3 T-states)**:</p>
+            <ul>
+                <li>T5: PC (2001H), ALE high, AD0–AD7 = 01 H, A8–A15 = 20 H, RD low, fetches low byte (00 H).</li>
+                <li>T6–T7: Store low byte.</li>
+            </ul>
+            <p>- **Memory Read 2 (3 T-states)**:</p>
+            <ul>
+                <li>T8: PC (2002H), ALE high, AD0–AD7 = 02 H, A8–A15 = 20 H, RD low, fetches high byte (50 H).</li>
+                <li>T9–T10: Form address 5000H.</li>
+            </ul>
+            <p>- **Memory Read 3 (3 T-states)**:</p>
+            <ul>
+                <li>T11: Address 5000H, ALE high, AD0–AD7 = 00 H, A8–A15 = 50 H, RD low, fetches data to Accumulator.</li>
+                <li>T12–T13: Complete read.</li>
+            </ul>
+            <p><strong>Final Answer:</strong> ALE demultiplexes AD0–AD7. LDA 5000H involves opcode fetch (4 T-states) and three memory reads (3 T-states each), totaling 13 T-states.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q3')">
+            3. Explain LHLD and SHLD instruction. Ten 8-bit data are stored at memory location starting from 6000H. Write an assembly program for 8085 microprocessor to calculate the sum of this data array and store the sum and carry starting from 9500H. [3+7]
+        </div>
+        <div id="q3" class="answer">
+            <p><strong>LHLD Instruction:</strong></p>
+            <p>- **Load H and L Direct**: Loads H and L registers with 16-bit data from memory. E.g., `LHLD 5000 \mathrm{H}` loads L from 5000H, H from 5001H.</p>
+            <p><strong>SHLD Instruction:</strong></p>
+            <p>- **Store H and L Direct**: Stores H and L in memory. E.g., `SHLD 9500 \mathrm{H}` stores L at 9500H, H at 9501H.</p>
+            <p><strong>Assembly Program:</strong></p>
+            <pre>
+        LXI H, 6000H    ; Point to data array
+        LXI D, 0000H    ; DE = sum (D = high, E = low)
+        MVI B, 0AH      ; Counter = 10
+LOOP:   MOV A, M        ; Get data
+        ADD E           ; Add to low byte
+        MOV E, A        ; Store low byte
+        JNC SKIP        ; If no carry, skip
+        INR D           ; Increment high byte (carry)
+SKIP:   INX H           ; Next data
+        DCR B           ; Decrement counter
+        JNZ LOOP        ; Repeat if not zero
+        LXI H, 9500H    ; Point to result
+        MOV M, E        ; Store low byte
+        INX H           ; Next address
+        MOV M, D        ; Store high byte
+        HLT             ; Stop
+            </pre>
+            <p><strong>Explanation:</strong></p>
+            <p>- `LXI H, 6000H`: HL points to data array.</p>
+            <p>- `LXI D, 0000H`: DE stores 16-bit sum.</p>
+            <p>- Loop adds each byte to E, increments D on carry.</p>
+            <p>- Result stored at 9500H (low) and 9501H (high).</p>
+            <p><strong>Final Answer:</strong> LHLD loads H, L from memory; SHLD stores them. Program sums 10 bytes from 6000H, stores result at 9500H.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Section B (8 × 5 = 40)</h2>
+        <p><em>Attempt any EIGHT questions:</em></p>
+        <div class="question" onclick="toggleAnswer('q4')">
+            4. Explain about memory segments and segment registers in 8086 microprocessor. [5]
+        </div>
+        <div id="q4" class="answer">
+            <p><strong>Memory Segments:</strong></p>
+            <p>- 8086 memory (1 MB) is divided into segments of 64 KB each, addressed using a 20-bit address (segment:offset).</p>
+            <p>- Physical address = Segment × 16 + Offset.</p>
+            <p><strong>Segment Registers:</strong></p>
+            <ul>
+                <li><strong>CS (Code Segment):</strong> Points to code segment for instructions.</li>
+                <li><strong>DS (Data Segment):</strong> Points to data segment for variables.</li>
+                <li><strong>SS (Stack Segment):</strong> Points to stack for push/pop.</li>
+                <li><strong>ES (Extra Segment):</strong> Used for additional data.</li>
+            </ul>
+            <p>Example: CS = 1000H, IP = 0500H → Address = 1000H × 16 + 0500H = 10500H.</p>
+            <p><strong>Final Answer:</strong> 8086 uses 64 KB segments, addressed via CS, DS, SS, ES registers with segment:offset.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q5')">
+            5. Write an ALP to convert the string "computer science" to uppercase using 16-bit microprocessor. [5]
+        </div>
+        <div id="q5" class="answer">
+            <p><strong>Assembly Program (8086):</strong></p>
+            <pre>
+.MODEL SMALL
+.DATA
+    STR DB 'computer science'
+    LEN EQU -STR
+.CODE
+    MOV AX, @DATA
+    MOV DS, AX
+    MOV SI, OFFSET STR
+    MOV CX, LEN
+NEXT: LODSB
+    CMP AL, 'a'
+    JB SKIP
+    CMP AL, 'z'
+    JA SKIP
+    SUB AL, 20H    ; Convert to uppercase
+    MOV [SI-1], AL
+SKIP: LOOP NEXT
+    MOV AH, 09H
+    MOV DX, OFFSET STR
+    INT 21H
+    MOV AH, 4CH
+    INT 21H
+END
+            </pre>
+            <p><strong>Explanation:</strong></p>
+            <p>- String stored in data segment.</p>
+            <p>- Loop checks each character; if lowercase (a–z), subtracts 20H to convert to uppercase.</p>
+            <p>- Displays result using DOS interrupt 21H.</p>
+            <p><strong>Final Answer:</strong> Program converts "computer science" to uppercase using 8086 ALP.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q6')">
+            6. Explain different types of IO instructions. Differentiate between I/O mapped I/O and memory mapped I/O. [1+4]
+        </div>
+        <div id="q6" class="answer">
+            <p><strong>I/O Instructions:</strong></p>
+            <p>- **IN**: Reads from I/O port to Accumulator (e.g., `IN AL, DX`).</p>
+            <p>- **OUT**: Writes from Accumulator to I/O port (e.g., `OUT DX, AL`).</p>
+            <p><strong>I/O Mapped vs. Memory Mapped I/O:</strong></p>
+            <ul>
+                <li><strong>I/O Mapped:</strong> Separate address space for I/O (0–FFFFH). Uses IN/OUT instructions. IO/M signal distinguishes I/O from memory.</li>
+                <li><strong>Memory Mapped:</strong> I/O devices share memory address space. Uses memory instructions (MOV). No separate I/O signal.</li>
+            </ul>
+            <p><strong>Final Answer:</strong> I/O instructions: IN, OUT. I/O mapped uses separate addresses and IN/OUT; memory mapped uses memory addresses and instructions.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q7')">
+            7. What do you mean by vectored interrupt? Explain maskable and non-maskable interrupts in 8085 microprocessor. [2+3]
+        </div>
+        <div id="q7" class="answer">
+            <p><strong>Vectored Interrupt:</strong></p>
+            <p>- Interrupt with a predefined memory address (vector) where the Interrupt Service Routine (ISR) is located. 8085 vectors: TRAP (0024), RST 7.5 (003C), etc.</p>
+            <p><strong>Maskable Interrupts:</strong></p>
+            <p>- Can be enabled/disabled using EI/DI instructions or interrupt masks. Includes RST 7.5, 6.5, 5.5, INTR. Controlled by Interrupt Enable flag.</p>
+            <p><strong>Non-Maskable Interrupts:</strong></p>
+            <p>- Cannot be disabled. TRAP is non-maskable, triggered for critical events (e.g., power failure).</p>
+            <p><strong>Final Answer:</strong> Vectored interrupts have fixed ISR addresses. Maskable: RST 7.5, 6.5, 5.5, INTR (disable via EI/DI). Non-maskable: TRAP.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q8')">
+            8. Explain different addressing modes in 8085 microprocessor. [5]
+        </div>
+        <div id="q8" class="answer">
+            <p><strong>Addressing Modes:</strong></p>
+            <ul>
+                <li><strong>Immediate:</strong> Data in instruction. E.g., `MVI A, 05H`.</li>
+                <li><strong>Register:</strong> Data in registers. E.g., `MOV A, B`.</li>
+                <li><strong>Direct:</strong> Address in instruction. E.g., `LDA 5000H`.</li>
+                <li><strong>Register Indirect:</strong> Address in register pair. E.g., `MOV A, M` (HL points to memory).</li>
+                <li><strong>Implied:</strong> No operand, implicit operation. E.g., `CMA` (complements Accumulator).</li>
+            </ul>
+            <p><strong>Final Answer:</strong> 8085 addressing modes: immediate, register, direct, register indirect, implied.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q9')">
+            9. Explain register organization in 80386 microprocessor. [5]
+        </div>
+        <div id="q9" class="answer">
+            <p><strong>80386 Registers:</strong></p>
+            <ul>
+                <li><strong>General-Purpose (32-bit):</strong> EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP. Used for data and addressing.</li>
+                <li><strong>Segment Registers:</strong> CS, DS, SS, ES, FS, GS. Select memory segments.</li>
+                <li><strong>Instruction Pointer:</strong> EIP (32-bit) points to next instruction.</li>
+                <li><strong>Flags:</strong> EFLAGS (32-bit) for status (e.g., Carry, Zero).</li>
+                <li><strong>Control Registers:</strong> CR0–CR3 for system control (e.g., paging).</li>
+                <li><strong>Debug Registers:</strong> DR0–DR7 for debugging.</li>
+            </ul>
+            <p><strong>Final Answer:</strong> 80386 has 32-bit general-purpose, segment, EIP, EFLAGS, control, and debug registers.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q10')">
+            10. List out the limitation of parallel communication. Explain the different operation modes of 8255A PPI. [5]
+        </div>
+        <div id="q10" class="answer">
+            <p><strong>Limitations of Parallel Communication:</strong></p>
+            <ul>
+                <li>Requires multiple wires, increasing cost.</li>
+                <li>Skew between signals at high speeds.</li>
+                <li>Limited distance due to signal degradation.</li>
+            </ul>
+            <p><strong>8255A PPI Modes:</strong></p>
+            <ul>
+                <li><strong>Mode 0 (Basic I/O):</strong> Ports A, B, C as simple input/output, no handshaking.</li>
+                <li><strong>Mode 1 (Strobed I/O):</strong> Ports A/B as input/output with handshaking (using Port C bits).</li>
+                <li><strong>Mode 2 (Bidirectional):</strong> Port A as bidirectional, Port C for control signals.</li>
+            </ul>
+            <p><strong>Final Answer:</strong> Parallel communication: costly, skew, limited distance. 8255A modes: Mode 0 (basic), Mode 1 (strobed), Mode 2 (bidirectional).</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q11')">
+            11. What is Descriptor? Explain the use of Segment descriptors in physical address conversion in 80286 microprocessor. [1+4]
+        </div>
+        <div id="q11" class="answer">
+            <p><strong>Descriptor:</strong></p>
+            <p>- A data structure defining a segment’s base address, size, and attributes (e.g., access rights).</p>
+            <p><strong>Segment Descriptors in 80286:</strong></p>
+            <p>- Stored in Descriptor Tables (GDT, LDT).</p>
+            <p>- Each descriptor (8 bytes) contains:</p>
+            <ul>
+                <li>Base Address (24-bit): Segment start.</li>
+                <li>Limit: Segment size (0–64 KB).</li>
+                <li>Attributes: Type (code/data), privilege level.</li>
+            </ul>
+            <p>- **Address Conversion**: Selector (from CS, DS) indexes GDT/LDT to fetch descriptor. Base address + offset = physical address (protected mode).</p>
+            <p><strong>Final Answer:</strong> Descriptor defines segment properties. In 80286, segment descriptors provide base address and limit for physical address conversion.</p>
+        </div>
+
+        <div class="question" onclick="toggleAnswer('q12')">
+            12. Write short notes on (any two): (a) Flags in 8085 MPU (b) DMA. [2.5+2.5]
+        </div>
+        <div id="q12" class="answer">
+            <p><strong>(a) Flags in 8085 MPU:</strong></p>
+            <p>- 5 flags in Flag Register: Sign (S), Zero (Z), Auxiliary Carry (AC), Parity (P), Carry (C).</p>
+            <p>- Updated after arithmetic/logical operations to indicate results (e.g., Z = 1 if result is zero).</p>
+            <p>- Used for conditional jumps (e.g., JZ).</p>
+            <p><strong>(b) DMA:</strong></p>
+            <p>- **Direct Memory Access**: Transfers data between memory and I/O without CPU involvement.</p>
+            <p>- 8085 uses HOLD and HLDA signals with DMA controller (e.g., 8237).</p>
+            <p>- Improves efficiency for large data transfers.</p>
+            <p><strong>Final Answer:</strong> (a) Flags: S, Z, AC, P, C for operation status. (b) DMA: CPU-free data transfer using HOLD/HLDA.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
